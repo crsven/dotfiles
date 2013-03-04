@@ -1,0 +1,9 @@
+--type-set=conf=.conf
+--type-add
+css=.sass,.scss
+
+--type-add
+html=.slim,.haml
+
+--type-add
+js=.coffee

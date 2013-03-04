@@ -1,0 +1,38 @@
+colorscheme twilight
+color twilight
+
+"Arpeggio mappings
+" Arpeggioimap jk <Esc>
+" Arpeggiomap lb :LustyBufferExplorer<CR>
+" Arpeggiomap lg :LustyBufferGrep<CR>
+
+" Highlight extra whitespace as red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+" Create whitespace group
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Don't show whitespace in ConqueTerm
+autocmd FileType conque_term set nolist
+
+" No ConqueTerm colors
+let g:ConqueTerm_Color=0
+
+" When merging - use these colors:
+if &diff
+  " VimDiff colors
+  colorscheme railscasts
+  highlight DiffAdd ctermfg=0 cterm=NONE guifg=#000000 gui=NONE
+  highlight DiffChange ctermfg=0 cterm=NONE guifg=#000000 gui=NONE
+  highlight DiffText ctermfg=0 guifg=#000000 cterm=NONE gui=NONE
+endif
+
+let g:user_zen_settings = {
+\ 'html' : {
+\  'indentation' : '  '
+\ },
+\}

@@ -1,0 +1,38 @@
+[user]
+  name = Chris Svenningsen
+  email = chris@carbonfive.com
+
+[alias]
+  com = commit
+  ci = commit -m
+  st = status -s
+  br = branch
+  co = checkout
+  lg = log --graph --all
+  l = log --graph
+  ll = !git --no-pager log --max-count=10
+  lll = !git --no-pager log --max-count=20
+  hist = log --pretty
+  type = cat-file -t
+  dump = cat-file -p
+  pt = push all --tags
+  dc = diff --cached
+  rollback = reset --soft HEAD~
+	ctags = !.git/hooks/ctags
+
+[format]
+  pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[merge]
+  tool = vimdiff
+
+[core]
+  editor=/usr/local/bin/vim
+  excludesfile = /Users/crsven/.gitignore_global
+
+[color]
+	diff = always
+  status = always
+	ui = auto
+[init]
+	templatedir = ~/.git_template
