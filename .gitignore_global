@@ -12,3 +12,5 @@ ctags-makefile
 Makefile
 config/encrypted.yml
 config/database.yml
+mixture.json
+**/tmp-mixture/*
