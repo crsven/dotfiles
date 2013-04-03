@@ -8,7 +8,7 @@
   st = status -s
   br = branch
   co = checkout
-  lg = log --graph --all
+  lg = !git --no-pager log --graph --all
   l = log --graph
   ll = !git --no-pager log --max-count=10
   lll = !git --no-pager log --max-count=20
@@ -17,8 +17,9 @@
   dump = cat-file -p
   pt = push all --tags
   dc = diff --cached
-  rollback = reset --soft HEAD~
-	ctags = !.git/hooks/ctags
+  rollback = !git reset --soft HEAD~ && git reset HEAD .
+  ctags = !.git/hooks/ctags
+  amend = commit -a --amend
 
 [format]
   pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
@@ -31,8 +32,8 @@
   excludesfile = /Users/crsven/.gitignore_global
 
 [color]
-	diff = always
+  diff = always
   status = always
-	ui = auto
+  ui = auto
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
