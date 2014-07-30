@@ -56,4 +56,4 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-. `brew --prefix`/etc/profile.d/z.sh
+export TEMP=~/temp
