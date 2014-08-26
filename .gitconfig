@@ -20,6 +20,12 @@
   rollback = !git reset --soft HEAD~ && git reset HEAD .
   ctags = !.git/hooks/ctags
   amend = commit -a --amend
+  wip = !git add -A && git commit -m 'wip'
+  serve = !git daemon --reuseaddr --base-path=. --export-all --verbose
+  update-develop = !git co develop && git pull && git co -
+  lost-stashes = !git fsck |grep commit | cut -d\\  -f3 | xargs git ll --merges --no-walk --grep=WIP
+  lost-commits = !git fsck --lost-found |grep commit | cut -d\\  -f3 | xargs git ll --no-walk
+  fethc = fetch
 
 [format]
   pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
