@@ -1,2 +1,1 @@
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH

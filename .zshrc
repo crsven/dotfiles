@@ -25,10 +25,8 @@ alias ll='ls -lahL'
 alias ber='bundle exec rake'
 alias bec='bundle exec cucumber'
 
-# Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin
-
-source /Users/crsven/.rvm/scripts/rvm
+#Add rbenv shims
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # fixing auto correct
 alias git='nocorrect git'
@@ -52,7 +50,7 @@ function _get_tags {
   echo $(echo $(awk -v ORS=" "  "/^${cur}/ { print \$1 }" tags))
 }
 
-export VIM=/usr/local/share/vim/vim73
+export VIM=/usr/local/share/vim/vim74
 
 export NODE_PATH=/usr/local/lib/node_modules
 
@@ -62,15 +60,6 @@ export EDITOR=/usr/local/bin/vim
 
 #teamocil autocomplete
 compctl -g '~/.teamocil/*(:t:r)' teamocil
-
-#carbometer
-source ~/.carbometer-env-variables
-
-#zest
-source ~/.zest-tests
-
-#virtualenv
-#source /usr/local/bin/virtualenvwrapper.sh
 
 #remove rake tab completion
 compdef -d rake
