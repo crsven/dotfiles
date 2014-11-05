@@ -1,0 +1,2 @@
+new-window -n console
+send-keys "be rails c" C-m

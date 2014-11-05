@@ -6,7 +6,7 @@ ZSH_THEME="bira"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git rails3 ruby homebrew bundler gem rvm tmux)
+plugins=(git rails ruby homebrew bundler gem rvm tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -21,7 +21,7 @@ function precmd () {
 }
 
 alias l='ls -l'
-alias ll='ls -la'
+alias ll='ls -lahL'
 alias ber='bundle exec rake'
 alias bec='bundle exec cucumber'
 
@@ -70,10 +70,12 @@ source ~/.carbometer-env-variables
 source ~/.zest-tests
 
 #virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 #remove rake tab completion
 compdef -d rake
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export VIMRUNTIME="/usr/local/share/vim/vim74a"
