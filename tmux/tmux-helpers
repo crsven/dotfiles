@@ -1,3 +1,3 @@
-bind C-s source-file ~/dotfiles/tmux/tmux-new-server
-bind C-v source-file ~/dotfiles/tmux/tmux-new-vim
-bind C-c source-file ~/dotfiles/tmux/tmux-new-console
+bind C-s source-file ~/tmux/tmux-new-server
+bind C-v source-file ~/tmux/tmux-new-vim
+bind C-c source-file ~/tmux/tmux-new-console
