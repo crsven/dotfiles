@@ -1,14 +1,29 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+source ~/personal/dotfiles/antigen/antigen.zsh
 
-# Set name of the theme to load.
-ZSH_THEME="bira"
+antigen bundle robbyrussell/oh-my-zsh lib/
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git rails ruby homebrew bundler gem rvm tmux)
+antigen theme robbyrussell/oh-my-zsh themes/bira
 
-source $ZSH/oh-my-zsh.sh
+antigen bundle git
+antigen bundle rails
+antigen bundle ruby
+antigen bundle brew
+antigen bundle brew-cask
+antigen bundle bundler
+antigen bundle gem
+antigen bundle rbenv
+antigen bundle tmux
+antigen bundle ssh-agent
+antigen bundle coffee
+antigen bundle node
+antigen bundle osx
+antigen bundle zsh-users/zsh-completions src
+
+antigen apply
+
+#autocomplete
+autoload -U compinit && compinit
+zmodload -i zsh/complist
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
@@ -26,7 +41,7 @@ alias ber='bundle exec rake'
 alias bec='bundle exec cucumber'
 
 #Add rbenv shims
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # fixing auto correct
 alias git='nocorrect git'
@@ -37,21 +52,22 @@ DISABLE_AUTO_TITLE=true
 
 # trying to get history search
 autoload -U history-search-end
+
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '\e[A' history-beginning-search-backward-end
 bindkey '\e[B' history-beginning-search-forward-end
 
 #vim tags
-function _get_tags {
-  [ -f ./tags ] || return
-  local cur
-  read -l cur
-  echo $(echo $(awk -v ORS=" "  "/^${cur}/ { print \$1 }" tags))
-}
+#function _get_tags {
+#  [ -f ./tags ] || return
+#  local cur
+#  read -l cur
+#  echo $(echo $(awk -v ORS=" "  "/^${cur}/ { print \$1 }" tags))
+#}
 
 export VIM=/usr/local/share/vim/vim74
-
+export VIMRUNTIME="/usr/local/share/vim/vim74"
 export NODE_PATH=/usr/local/lib/node_modules
 
 #tmuxinator
@@ -59,12 +75,10 @@ export NODE_PATH=/usr/local/lib/node_modules
 export EDITOR=/usr/local/bin/vim
 
 #teamocil autocomplete
-compctl -g '~/.teamocil/*(:t:r)' teamocil
+#compctl -g '~/.teamocil/*(:t:r)' teamocil
 
 #remove rake tab completion
 compdef -d rake
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-export VIMRUNTIME="/usr/local/share/vim/vim74a"
