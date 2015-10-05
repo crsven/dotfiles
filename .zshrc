@@ -18,6 +18,7 @@ antigen bundle coffee
 antigen bundle node
 antigen bundle osx
 antigen bundle zsh-users/zsh-completions src
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
@@ -36,7 +37,7 @@ function precmd () {
 }
 
 alias l='ls -l'
-alias ll='ls -lahL'
+alias ll='ls -lah'
 alias ber='bundle exec rake'
 alias bec='bundle exec cucumber'
 
@@ -83,5 +84,17 @@ compdef -d rake
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+source ~/PARTICLE_CORE_VARS
+
+alias resu='sudo $(history | tail -n1 | cut -c 8-)'
+
 export NVM_DIR="/Users/crsven/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias ports="lsof -i -P | grep -i 'listen'"
+
+#supermove
+autoload -U zmv
+alias mmv='noglob zmv -W'
