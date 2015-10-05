@@ -1,2 +1,2 @@
-new-window -n console
+new-window -n console -c '#{pane_current_path}'
 send-keys "be rails c" C-m

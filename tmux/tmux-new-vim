@@ -1,2 +1,2 @@
-new-window -n vim
+new-window -n vim -c '#{pane_current_path}'
 send-keys "vim ." C-m

@@ -1,2 +1,2 @@
-new-window -n svr
+new-window -n svr -c '#{pane_current_path}'
 send-keys "be rails s" C-m
