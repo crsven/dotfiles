@@ -24,7 +24,9 @@
   update-develop = !git co develop && git pull && git co -
   ;lost-stashes = !git fsck |grep commit | cut -d\\  -f3 | xargs git ll --merges --no-walk --grep=WIP
   lost-stashes = !git fsck |grep commit | cut -d ' '  -f3 | xargs git ll --merges --no-walk --grep=WIP
-  lost-commits = !git fsck --lost-found |grep commit | cut -d\\  -f3 | xargs git ll --no-walk
+  lost-commits = !git fsck --no-reflogs | grep commit | cut -d\\  -f3 | xargs git ll --no-walk
+  lost-file = !git fsck --no-reflogs | grep commit | cut -d ' ' -f3 | xargs -J @ git log --no-walk --name-status @ --
+  ;git lost-commits --pretty=tformat:'%H' | xargs -L1 git --no-pager show --name-status
   fethc = fetch
 
 [format]
@@ -43,3 +45,5 @@
   ui = auto
 [init]
   templatedir = ~/.git_template
+[rerere]
+  enabled = true
