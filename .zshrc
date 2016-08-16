@@ -1,26 +1,35 @@
-source ~/personal/dotfiles/antigen/antigen.zsh
+unset GREP_OPTIONS
 
-antigen bundle robbyrussell/oh-my-zsh lib/
+source "${HOME}/.zgen/zgen.zsh"
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    echo "Creating a zgen save"
 
-antigen theme robbyrussell/oh-my-zsh themes/bira
+    zgen oh-my-zsh
 
-antigen bundle git
-antigen bundle rails
-antigen bundle ruby
-antigen bundle brew
-antigen bundle brew-cask
-antigen bundle bundler
-antigen bundle gem
-antigen bundle rbenv
-antigen bundle tmux
-antigen bundle ssh-agent
-antigen bundle coffee
-antigen bundle node
-antigen bundle osx
-antigen bundle zsh-users/zsh-completions src
-antigen bundle zsh-users/zsh-syntax-highlighting
+    # plugins
+    zgen oh-my-zsh plugins/brew
+    zgen oh-my-zsh plugins/brew-cask
+    zgen oh-my-zsh plugins/bundler
+    zgen oh-my-zsh plugins/coffee
+    zgen oh-my-zsh plugins/node
+    zgen oh-my-zsh plugins/osx
+    zgen oh-my-zsh plugins/rbenv
+    zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/tmux
+    zgen oh-my-zsh themes/bira
 
-antigen apply
+    # bulk load
+    zgen loadall <<EOPLUGINS
+        zsh-users/zsh-completions src
+        zsh-users/zsh-syntax-highlighting
+        felixr/docker-zsh-completion
+        yonchu/grunt-zsh-completion
+EOPLUGINS
+
+    # save all to init script
+    zgen save
+fi
 
 #autocomplete
 autoload -U compinit && compinit
@@ -69,11 +78,11 @@ bindkey '\e[B' history-beginning-search-forward-end
 
 export VIM=/usr/local/share/vim/vim74
 export VIMRUNTIME="/usr/local/share/vim/vim74"
-export NODE_PATH=/usr/local/lib/node_modules
+export NODE_PATH=/usr/local/lib/node_modules:./node_modules:$NODE_PATH
 
 #tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-export EDITOR=/usr/local/bin/vim
+#[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+#export EDITOR=/usr/local/bin/vim
 
 #teamocil autocomplete
 #compctl -g '~/.teamocil/*(:t:r)' teamocil
@@ -98,3 +107,6 @@ alias ports="lsof -i -P | grep -i 'listen'"
 #supermove
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+export LESS="R"
+export PATH="./node_modules/.bin:$PATH"

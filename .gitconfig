@@ -19,9 +19,9 @@
   dc = diff --cached
   rollback = !git reset --soft HEAD~ && git reset HEAD .
   amend = commit -a --amend
-  wip = !git add -A && git commit -m 'wip' -n
+  wip = !git add -A && git commit -m '[ci-skip] wip' -n
   serve = !git daemon --reuseaddr --base-path=. --export-all --verbose
-  update-develop = !git co develop && git pull && git co -
+  update-develop = !git co develop\t && git pull && git co -
   ;lost-stashes = !git fsck |grep commit | cut -d\\  -f3 | xargs git ll --merges --no-walk --grep=WIP
   lost-stashes = !git fsck |grep commit | cut -d ' '  -f3 | xargs git ll --merges --no-walk --grep=WIP
   lost-commits = !git fsck --no-reflogs | grep commit | cut -d\\  -f3 | xargs git ll --no-walk
@@ -47,3 +47,5 @@
   templatedir = ~/.git_template
 [rerere]
   enabled = true
+[diff]
+  compactionHeuristic = true
