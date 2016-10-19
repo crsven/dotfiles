@@ -37,7 +37,7 @@ zmodload -i zsh/complist
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export TEMP=/Users/crsven/temp
+export TEMP=~/temp
 
 # z stuff
 . `brew --prefix`/etc/profile.d/z.sh
@@ -99,7 +99,7 @@ source ~/PARTICLE_CORE_VARS
 
 alias resu='sudo $(history | tail -n1 | cut -c 8-)'
 
-export NVM_DIR="/Users/crsven/.nvm"
+export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 alias ports="lsof -i -P | grep -i 'listen'"
@@ -110,3 +110,16 @@ alias mmv='noglob zmv -W'
 
 export LESS="R"
 export PATH="./node_modules/.bin:$PATH"
+
+#Swift Package Manager
+export TOOLCHAINS=swift
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
+
+#Tsung
+export PATH=/usr/local/Cellar/tsung/1.6.0/lib/tsung/bin/:$PATH
+
+PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
